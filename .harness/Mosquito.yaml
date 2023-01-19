@@ -23,6 +23,9 @@ pipeline:
                     image: baalajimaestro/android_build:latest
                     shell: Bash
                     command: bash ./runner.sh
+                    envVariables:
+                      BUILD_NUMBER: <+pipeline.executionId>
+                      GH_PERSONAL_TOKEN: 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
           platform:
             os: Linux
             arch: Amd64
