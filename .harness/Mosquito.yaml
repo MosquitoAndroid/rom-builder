@@ -1,0 +1,36 @@
+pipeline:
+  name: Mosquito
+  identifier: Mosquito
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: baalajimaestro/android_build:latest
+                    shell: Bash
+                    command: bash ./build.sh -i rr -U https://github.com/ResurrectionRemix/platform_manifest.git -B pie -b xiaomi -d whyred -r
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: MosquitoAndroid
+        build: <+input>
