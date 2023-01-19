@@ -18,6 +18,6 @@ echo $TELEGRAM_CHAT > /tmp/tg_chat
 #sudo echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 #useradd -m -d /home/ci ci
 #useradd -g ci wheel
-#echo `pwd` > /tmp/loc
+echo `pwd` > /tmp/loc
 #sudo -Hu ci 
 bash ./build.sh -i mosquito -U https://github.com/MosquitoAndroid/manifest.git -B s12.1 -b oneplus -d lemonade -r
