@@ -340,11 +340,11 @@ upload() {
     git push origin binary --follow-tags
     build_date_scr=$(date +%F_%H-%M)
     if [ ! -z $build_orig_scr ] && [ $upload_scr ]; then
-      bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=witherking25 repo=$(cat /tmp/gh_repo) tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
+      bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=MosquitoAndroid repo=manifest tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
         file=`ls $HOME/buildscript/*.img | tail -n 1`
         id=$(gdrive upload --parent $G_FOLDER $file | grep "Uploaded" | cut -d " " -f 2)
     elif [ -z $build_orig_scr ] && [ $upload_scr ]; then
-        bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=witherking25 repo=$(cat /tmp/gh_repo) tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
+        bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=MosquitoAndroid repo=manifest tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
     fi
 
     if [ $telegram_scr ] && [ $upload_scr ]; then
