@@ -22,7 +22,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: baalajimaestro/android_build:latest
                     shell: Bash
-                    command: bash ./build.sh -i rr -U https://github.com/ResurrectionRemix/platform_manifest.git -B pie -b xiaomi -d whyred -r
+                    command: bash ./build.sh -i mosquito -U https://github.com/MosquitoAndroid/manifest.git -B s12.1 -b oneplus -d lemonade -r
           platform:
             os: Linux
             arch: Amd64
