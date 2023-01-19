@@ -203,11 +203,11 @@ function_check() {
 
     if [ ! -f telegram ];
     then
-        if [ ! #NO_TELEGRAM ]; then
+        if [ ! $NO_TELEGRAM ]; then
             echo "Telegram binary not present. Installing..\n"
             wget -q https://raw.githubusercontent.com/Dyneteve/misc/master/telegram
         else
-            printf "You don't have TELEGRAM_TOKEN,TELEGRAM_CHAT set. Stubbing..\n"
+            echo "You don't have TELEGRAM_TOKEN,TELEGRAM_CHAT set. Stubbing..\n"
             touch telegram
         fi
         chmod +x telegram
