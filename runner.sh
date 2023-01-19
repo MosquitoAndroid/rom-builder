@@ -15,9 +15,10 @@ echo $GH_PERSONAL_TOKEN > /tmp/gh_token
 echo $GH_REPO_NAME > /tmp/gh_repo
 echo $DRONE_BUILD_NUMBER > /tmp/build_no
 echo $TELEGRAM_CHAT > /tmp/tg_chat
-echo `pwd` > /tmp/loc
-sudo echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-useradd -m -d /home/ci ci
-useradd -g ci wheel
-echo `pwd` > /tmp/loc
-sudo -Hu ci bash -c "bash build.sh -i rr -U https://github.com/ResurrectionRemix/platform_manifest.git -B pie -b xiaomi -d whyred -r"
+#echo `pwd` > /tmp/loc
+#sudo echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#useradd -m -d /home/ci ci
+#useradd -g ci wheel
+#echo `pwd` > /tmp/loc
+#sudo -Hu ci 
+bash ./build.sh -i mosquito -U https://github.com/MosquitoAndroid/manifest.git -B s12.1 -b oneplus -d lemonade -r
