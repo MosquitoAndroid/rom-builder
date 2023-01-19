@@ -20,13 +20,13 @@ export GH_PERSONAL_TOKEN=$(cat /tmp/gh_token)
 export TELEGRAM_TOKEN
 export TELEGRAM_CHAT
 cd ~
-git clone https://baalajimaestro:${GH_PERSONAL_TOKEN}@github.com/baalajimaestro/google-git-cookies.git > /dev/null 2>&1
+git clone https://witherking25:${GH_PERSONAL_TOKEN}@github.com/MosquitoAndroid/google-git-cookies.git > /dev/null 2>&1
 cd google-git-cookies
 bash run.sh
 cd ..
 rm -rf google-git-cookies
-git config --global user.email "baalajimaestro@raphielgang.org"
-git config --global user.name "baalajimaestro"
+git config --global user.email "witherking@withertech.com"
+git config --global user.name ""
 echo "Google Git Cookie Set!"
 }
 
@@ -329,22 +329,22 @@ upload() {
     if [ -f $HOME/buildscript/*.img ]; then
         rm -f $HOME/buildscript/*.img
     fi
-    git clone https://github.com/baalajimaestro/Generic-ROM-Builder -b binary binary
+    git clone https://github.com/MosquitoAndroid/rom-builder -b binary binary
     cd binary
     touch "$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)"
     git add .
     git commit -m "[MaestroCI]: Releasing Build ${prepare_source_scr}-$(date +%d%m%y)"
     git tag "$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)"
     git remote rm origin
-    git remote add origin https://baalajimaestro:${GH_PERSONAL_TOKEN}@github.com/baalajimaestro/Generic-ROM-Builder.git
+    git remote add origin https://witherking25:${GH_PERSONAL_TOKEN}@github.com/MosquitoAndroid/rom-builder.git
     git push origin binary --follow-tags
     build_date_scr=$(date +%F_%H-%M)
     if [ ! -z $build_orig_scr ] && [ $upload_scr ]; then
-      bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=baalajimaestro repo=$(cat /tmp/gh_repo) tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
+      bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=witherking25 repo=$(cat /tmp/gh_repo) tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
         file=`ls $HOME/buildscript/*.img | tail -n 1`
         id=$(gdrive upload --parent $G_FOLDER $file | grep "Uploaded" | cut -d " " -f 2)
     elif [ -z $build_orig_scr ] && [ $upload_scr ]; then
-        bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=baalajimaestro repo=$(cat /tmp/gh_repo) tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
+        bash upload-github-release-asset.sh github_api_token=$GH_PERSONAL_TOKEN owner=witherking25 repo=$(cat /tmp/gh_repo) tag="$(date +%d%m%y)-${prepare_source_scr}-$(cat /tmp/build_no)" filename=$file
     fi
 
     if [ $telegram_scr ] && [ $upload_scr ]; then
