@@ -197,15 +197,19 @@ prepare_source() {
 
 function_check() {
     if [ ! $TELEGRAM_TOKEN ] && [ ! $TELEGRAM_CHAT ]; then
-        printf "You don't have TELEGRAM_TOKEN,TELEGRAM_CHAT set"
-        exit
+        export NO_TELEGRAM=1
     fi
 
 
     if [ ! -f telegram ];
     then
-        echo "Telegram binary not present. Installing.."
-        wget -q https://raw.githubusercontent.com/Dyneteve/misc/master/telegram
+        if [ ! #NO_TELEGRAM ]; then
+            echo "Telegram binary not present. Installing..\n"
+            wget -q https://raw.githubusercontent.com/Dyneteve/misc/master/telegram
+        else
+            printf "You don't have TELEGRAM_TOKEN,TELEGRAM_CHAT set. Stubbing..\n"
+            touch telegram
+        fi
         chmod +x telegram
     fi
 
