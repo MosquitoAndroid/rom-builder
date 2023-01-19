@@ -6,5 +6,5 @@ with open(f'{str(Path.home())}/.repo/manifest.xml') as oldfile, open(f'{str(Path
     for line in oldfile:
         if not any(deps in line for deps in useless_deps):
             newfile.write(line)
-os.remove('/home/ci/.repo/manifest.xml')
-os.rename('/home/ci/.repo/manifest_new.xml','/home/ci/.repo/manifest.xml')
+os.remove(f'{str(Path.home())}/.repo/manifest.xml')
+os.rename(f'{str(Path.home())}/.repo/manifest_new.xml','/home/ci/.repo/manifest.xml')
